@@ -2,11 +2,10 @@ Oral Cancer Classifier
 
 A Django-based web application that uses a Vision Transformer (ViT) deep learning model to classify oral images as Cancer or Non Cancer.
 
- Features:
-* Upload oral images through a web interface
-* AI-based image classification
-* Vision Transformer (ViT) model
-* Django web application
+Features:
+*Image upload through a Django web interface
+*Deep learning classification using Vision Transformer (ViT)
+*Binary classification:Cancer or Non Cancer
 
  Technologies:
 * Python 3.11
@@ -25,18 +24,22 @@ A Django-based web application that uses a Vision Transformer (ViT) deep learnin
 * manage.py — Django management script
 
 Setup:
-git clone https://github.com/JVM-Sreeja/oral-cancer-classifier.git
-cd oral-cancer-classifier
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+->git clone https://github.com/JVM-Sreeja/oral-cancer-classifier.git
+->cd oral-cancer-classifier
+->python -m venv venv
+->venv\Scripts\activate
+->pip install -r requirements.txt
 
 Model:
-The project uses a trained Vision Transformer model (`oralcancer_vit.pth`).
-The trained model is not included in this repository because of its large file size.
+*The project uses a pretrained Vision Transformer architecture:vit_base_patch16_224
+*The model is configured for two classes and uses a trained .pth state dictionary for classification.
+*The trained model file is:oralcancer_vit.pth
+*Make sure the path used in classifier/predict.py points to the correct model location.
+*It is recommended to use a project-relative path rather than a computer-specific path.
+*The model file is not included in this repository because of its large file size.
 
 Run Locally:
-python manage.py runserver
+->python manage.py runserver
 The application can then be accessed through the local Django development server.
 
- Note:This project is for educational and demonstration purposes and is not a medical diagnostic tool.
+Note:This project is intended for educational and demonstration purposes. It is not a medical diagnostic tool and should not be used as a substitute for professional medical diagnosis or clinical evaluation.
