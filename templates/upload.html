@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oral Cancer Classifier</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f5f7fb;
+}
+.top-header {
+    background: linear-gradient(to right, #cfd9ee, #e4ebf8);
+    padding: 14px 30px;
+}
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+.logo span {
+    color: #4a6fdc;
+}
+.navbar {
+    background: white;
+    padding: 10px 30px;
+    border-bottom: 1px solid #e0e6f0;
+    display: flex;
+    gap: 25px;
+}
+.navbar a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #6b7280;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+.navbar a:hover {
+    background: #eef2ff;
+    color: #4a6fdc;
+}
+.page {
+    display: none;
+    padding: 60px 50px;
+    min-height: 360px;
+    align-items: center;
+    justify-content: space-between;
+}
+#home:target,
+#info:target {
+    display: flex;
+}
+#prediction:target {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body:not(:has(:target)) #home {
+    display: flex;
+}
+.content {
+    max-width: 460px;
+}
+h1 {
+    font-size: 34px;
+    margin-bottom: 18px;
+    color: #2c3e50;
+}
+h1 span {
+    color: #4a6fdc;
+}
+p {
+    font-size: 14px;
+    color: #5a6475;
+    line-height: 1.6;
+}
+.btn {
+    margin-top: 24px;
+    background: #4a6fdc;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+}
+.btn:hover {
+    background: #3657b7;
+}
+.visual {
+    width: 300px;
+    height: 250px;
+    border-radius: 25px;
+    overflow: hidden;
+    background: white;
+}
+.tooth-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.predict-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.predict-box {
+    width: 420px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(74,111,220,0.15);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    text-align: center;
+}
+.predict-title {
+    font-size: 26px;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+.predict-title span {
+    color: #4a6fdc;
+}
+.predict-subtitle {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 18px;
+}
+.file-input {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #4b5563;
+}
+.file-input input {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #c7d2fe;
+    border-radius: 8px;
+    background: #f9fafb;
+}
+#file-name {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #4b5563;
+}
+.analyze-btn {
+    margin-top: 18px;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    background: linear-gradient(to right, #4a6fdc, #3657b7);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.analyze-btn:hover {
+    transform: scale(1.02);
+}
+.result {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    color: #065f46;
+}
+@media(max-width:900px){
+    .page { flex-direction: column; }
+    .visual { margin-top: 25px; }
+}
+</style>
+</head>
+<body>
+<div class="top-header">
+<div class="logo">Oral Cancer Classification <span>System</span></div>
+</div>
+<div class="navbar">
+<a href="#home">Home</a>
+<a href="#info">Information</a>
+<a href="#prediction">Prediction</a>
+</div>
+
+<!-- HOME -->
+<div id="home" class="page">
+<div class="content">
+<h1>Oral Cancer <span>Classifier</span></h1>
+<p>AI-based system for early detection using deep learning.</p>
+<a href="#prediction" class="btn">Start Prediction</a>
+</div>
+<div class="visual">
+<img src="{% static 'images/tooth.png' %}" class="tooth-img">
+</div>
+</div>
+
+<!-- INFO -->
+<div id="info" class="page">
+<div class="content">
+<h1>Understanding <span>Oral Cancer</span></h1>
+<p>Oral cancer is a serious disease that develops in the tissues of the mouth, including the tongue, lips, gums, cheeks, and throat. It occurs when abnormal cells grow uncontrollably and form tumors within the oral cavity. Common risk factors include tobacco use, excessive alcohol consumption, poor oral hygiene, prolonged exposure to harmful substances, and certain viral infections.<br><br>Early detection of oral cancer is extremely important because it greatly improves the chances of successful treatment. When oral cancer is identified in its early stages, treatment is usually more effective and less complicated. Patients diagnosed early often require less aggressive treatment, experience fewer complications, and have a higher survival rate. Early diagnosis also helps preserve normal oral functions such as speaking, chewing, and swallowing.<br><br>Failure to detect oral cancer at an early stage can lead to serious health consequences. When left untreated for a long time, cancer cells may spread to nearby tissues and other parts of the body. This can result in severe pain, difficulty in eating and speaking, tissue damage, and significant weight loss. Late detection often requires more complex treatments such as major surgery, radiation therapy, or chemotherapy. In advanced stages, delayed diagnosis reduces the chances of recovery and increases the risk of life-threatening complications.</p>
+<a href="#prediction" class="btn">Go to Prediction</a>
+</div>
+<div class="visual">
+<img src="{% static 'images/tooth.png' %}" class="tooth-img">
+</div>
+</div>
+
+<!-- PREDICTION -->
+<div id="prediction" class="page">
+<div class="predict-container">
+<div class="predict-box">
+<h1 class="predict-title">Oral Cavity <span>Analyzer</span></h1>
+<p class="predict-subtitle">Upload image </p>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="file-input">
+<label>Select Image File</label>
+<input type="file" name="image" accept="image/*" required onchange="showFileName(this)">
+</div>
+<p id="file-name"></p>
+<button type="submit" class="analyze-btn">Analyze Image</button>
+</form>
+{% if result %}
+<div class="result">Prediction: {{ result }}</div>
+{% endif %}
+</div>
+</div>
+</div>
+<script>
+function showFileName(input){
+    if(input.files.length > 0){
+        document.getElementById("file-name").innerText = input.files[0].name;
+    }
+}
+</script>
+</body>
+</html>

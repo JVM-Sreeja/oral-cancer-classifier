@@ -1,0 +1,6 @@
+venv_new/
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+models/oralcancer_vit.pth
