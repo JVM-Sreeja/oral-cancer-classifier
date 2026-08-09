@@ -17,12 +17,12 @@ A Django-based web application that uses a Vision Transformer (ViT) deep learnin
 * Pillow
 
  Project Structure:
-* cancer_webapp/` — Django project configuration
-* classifier/` — Image classification application
-* static/` — Static files
-* templates/` — HTML templates
-* models/` — Model files
-* manage.py` — Django management script
+* cancer_webapp/ — Django project configuration
+* classifier/ — Image classification application
+* static/ — Static files
+* templates/ — HTML templates
+* models/ — Model files
+* manage.py — Django management script
 
 Setup:
 git clone https://github.com/JVM-Sreeja/oral-cancer-classifier.git
